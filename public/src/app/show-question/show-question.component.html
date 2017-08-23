@@ -1,0 +1,21 @@
+<div>
+	<nav>
+		<a [routerLink]="['/dashboard']">Home</a> | 
+		<a [routerLink]="['/question', question._id, 'new_answer']">Answer this Question</a>
+		<a [routerLink]="['']">Logout</a>
+	</nav>
+	<h1>{{question.q_text}}</h1>
+	<p>{{question.desc}}</p>
+	<div *ngFor="let answer of question._answers" class="answers">
+		<p>{{answer.user}}</p>
+		<p>{{answer.a_text}}___________________________________________{{answer.likes}}Likes 
+		<input 
+		type="submit" 
+		value="Like!"
+		(click)="addLike(answer._id)"
+		>
+
+		</p>
+		<p>{{answer.details}}</p>
+	</div>
+</div>

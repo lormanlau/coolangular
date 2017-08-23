@@ -1,0 +1,32 @@
+<div>
+	<nav>
+		<a [routerLink]="['/dashboard']">Home</a> 
+		<a [routerLink]="['']">Logout</a>
+	</nav>
+	<h1>New Question</h1>
+	<form #form='ngForm'>
+		<p>
+			Question: 
+			<textarea 
+			name="q_text"
+			required
+			minlength="10"
+			[(ngModel)]="question.q_text"
+			#q_text='ngModel' 
+			></textarea>
+			<span *ngIf="q_text.errors">Needs to be 10 characters long</span>
+		</p>
+		<p>
+			Description: <br> (optional)
+			<textarea 
+			name="desc"
+			[(ngModel)]="question.desc"
+			#desc='ngModel' 
+			></textarea>
+		</p>
+		<p>
+			<input [routerLink]="['/dashboard']" type="submit" value="Cancel">
+			<input [routerLink]="['/dashboard']" (click)="onSubmit()" [disabled]="!form.valid" type="submit" value="Submit">
+		</p>
+	</form>
+</div>
